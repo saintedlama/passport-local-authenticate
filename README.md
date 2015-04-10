@@ -4,7 +4,6 @@ Encapsulates methods used to hash and verify user credentials for use in a passp
 [![Build Status](https://travis-ci.org/saintedlama/passport-local-authenticate.png?branch=master)](https://travis-ci.org/saintedlama/passport-local-authenticate)
 [![Coverage Status](https://coveralls.io/repos/saintedlama/passport-local-authenticate/badge.png?branch=master)](https://coveralls.io/r/saintedlama/passport-local-authenticate?branch=master)
 
-
 ## Installation
 
     $ npm install passport-local-authenticate --save
