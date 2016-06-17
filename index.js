@@ -57,7 +57,7 @@ function verify(password, credentials, options, next) {
     return next(new ArgumentError('Salt argument is not specified'));
   }
 
-  crypto.pbkdf2(password, credentials.salt, options.iterations, options.keylen, function (err, hashRaw) {
+  crypto.pbkdf2(password, credentials.salt, options.iterations, options.keylen, options.digest, function (err, hashRaw) {
     if (err) { return next(err); }
 
     var hash = new Buffer(hashRaw, 'binary').toString(options.encoding);
