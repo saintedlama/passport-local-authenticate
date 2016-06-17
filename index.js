@@ -23,7 +23,7 @@ function hash(password, options, next) {
 
     var salt = buf.toString(options.encoding);
 
-    crypto.pbkdf2(password, salt, options.iterations, options.keylen, function(err, hashRaw) {
+    crypto.pbkdf2(password, salt, options.iterations, options.keylen, options.digest, function(err, hashRaw) {
       if (err) { return next(err); }
 
       var hash = new Buffer(hashRaw, 'binary').toString(options.encoding);
@@ -72,6 +72,7 @@ function defaultOptions(options) {
   options.encoding = options.encoding || 'hex';
   options.iterations = options.iterations || 25000;
   options.keylen = options.keylen || 512;
+  options.digest = options.digest || 'SHA1';
 
   return options;
 }
