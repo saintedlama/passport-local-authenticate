@@ -29,6 +29,10 @@ Encapsulates methods used to hash and verify user credentials for use in a passp
       ));
     });
 
+**Attention** options.digestAlgorithm is set to 'SHA1' which is not considered too safe but was 
+chosen for backward compatibility.
+Future versions (major) will use some 'SHA-256' digest algorithm!
+
 ## Options
 *Attention!* Changing any of the hashing options (saltlen, iterations or keylen) in a production environment will prevent that existing users to authenticate!
 
@@ -36,6 +40,9 @@ Encapsulates methods used to hash and verify user credentials for use in a passp
 * iterations: specifies the number of iterations used in pbkdf2 hashing algorithm. Default: 25000
 * keylen: specifies the length in byte of the generated key. Default: 512
 * encoding: specifies the encoding the generated salt and hash will be stored in. Defaults to 'hex'.
+* digestAlgorithm: digest algorith to use in pbkdf2. Valid values can be retrieved using crypto.getHashes().
+    A popular choices is 'sha256' or 'sha512'.
+    **Attention** Only working in node.js versions greater 0.10.  And in case your sitting on a 0.10 project consider an upgrade. Really! 
 
 ### Hash Algorithm
 Passport-Local-Authenticate uses the pbkdf2 algorithm of the node crypto library. 
