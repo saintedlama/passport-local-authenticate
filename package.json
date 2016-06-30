@@ -23,6 +23,7 @@
     "cover": "istanbul cover ./node_modules/mocha/bin/_mocha --report html -- -R spec"
   },
   "dependencies": {
-    "generaterr": "^1.1.0"
+    "generaterr": "^1.1.0",
+    "semver": "^5.2.0"
   }
 }

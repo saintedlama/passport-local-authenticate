@@ -1,5 +1,7 @@
 var crypto = require('crypto');
 var ArgumentError = require('generaterr')('ArgumentError');
+var semver = require('semver');
+var pbkdf2DigestSupport = semver.gte(process.version, '0.12.0');
 
 module.exports = {
   hash :hash,
@@ -23,7 +25,7 @@ function hash(password, options, next) {
 
     var salt = buf.toString(options.encoding);
 
-    crypto.pbkdf2(password, salt, options.iterations, options.keylen, options.digest, function(err, hashRaw) {
+    pbkdf2(password, salt, options.iterations, options.keylen, options.digest, function(err, hashRaw) {
       if (err) { return next(err); }
 
       var hash = new Buffer(hashRaw, 'binary').toString(options.encoding);
@@ -57,7 +59,7 @@ function verify(password, credentials, options, next) {
     return next(new ArgumentError('Salt argument is not specified'));
   }
 
-  crypto.pbkdf2(password, credentials.salt, options.iterations, options.keylen, options.digest, function (err, hashRaw) {
+  pbkdf2(password, credentials.salt, options.iterations, options.keylen, options.digest, function (err, hashRaw) {
     if (err) { return next(err); }
 
     var hash = new Buffer(hashRaw, 'binary').toString(options.encoding);
@@ -76,3 +78,11 @@ function defaultOptions(options) {
 
   return options;
 }
+
+function pbkdf2(password, salt, iterations, keylen, digest, callback) {
+  if (pbkdf2DigestSupport) {
+    crypto.pbkdf2(password, salt, iterations, keylen, digest, callback);
+  } else {
+    crypto.pbkdf2(password, salt, iterations, keylen, callback);
+  }
+};
