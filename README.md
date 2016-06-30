@@ -36,6 +36,7 @@ Encapsulates methods used to hash and verify user credentials for use in a passp
 * iterations: specifies the number of iterations used in pbkdf2 hashing algorithm. Default: 25000
 * keylen: specifies the length in byte of the generated key. Default: 512
 * encoding: specifies the encoding the generated salt and hash will be stored in. Defaults to 'hex'.
+* digest: specifies the digest method. Defaults to 'SHA1'
 
 ### Hash Algorithm
 Passport-Local-Authenticate uses the pbkdf2 algorithm of the node crypto library. 
