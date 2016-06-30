@@ -1,5 +1,6 @@
 var crypto = require('crypto');
 var semver = require('semver');
+var scmp = require('scmp');
 
 var ArgumentError = require('generaterr')('ArgumentError');
 
@@ -66,7 +67,7 @@ function verify(password, credentials, options, next) {
 
     var hash = new Buffer(hashRaw, 'binary').toString(options.encoding);
 
-    return next(null, hash === credentials.hash);
+    return next(null, scmp(hash, credentials.hash));
   });
 }
 
