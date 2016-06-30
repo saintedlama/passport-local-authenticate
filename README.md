@@ -2,7 +2,7 @@
 Encapsulates methods used to hash and verify user credentials for use in a passport-local strategy. This simplifies building username and password login with [Passport](http://passportjs.org).
 
 [![Build Status](https://travis-ci.org/saintedlama/passport-local-authenticate.png?branch=master)](https://travis-ci.org/saintedlama/passport-local-authenticate)
-[![Coverage Status](https://coveralls.io/repos/saintedlama/passport-local-authenticate/badge.png?branch=master)](https://coveralls.io/r/saintedlama/passport-local-authenticate?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/saintedlama/passport-local-authenticate/badge.svg?branch=master)](https://coveralls.io/github/saintedlama/passport-local-authenticate?branch=master)
 
 ## Installation
 
