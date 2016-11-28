@@ -20,13 +20,13 @@ Encapsulates methods used to hash and verify user credentials for use in a passp
     auth.hash('password', function(err, hashed) {
       auth.verify('password', hashed, function(err, verified) {
         console.log(verified); // True, passwords match
-      ));
+      });
     });
 
     auth.hash('password', function(err, hashed) {
       auth.verify('password2', hashed, function(err, verified) {
         console.log(verified); // False, passwords don't match
-      ));
+      });
     });
 
 **Attention** options.digestAlgorithm is set to 'SHA1' which is not considered too safe but was 
