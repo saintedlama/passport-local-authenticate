@@ -29,9 +29,10 @@ Encapsulates methods used to hash and verify user credentials for use in a passp
       ));
     });
 
-**Attention** options.digestAlgorithm is set to 'SHA1' which is not considered too safe but was 
-chosen for backward compatibility.
-Future versions (major) will use some 'SHA-256' digest algorithm!
+**Attention** options.digestAlgorithm defaults to 'sha256'. Hashes created with older versions
+of this module used 'sha1' as the default and are still accepted during verification; they are
+transparently re-hashed with the stronger digest and the upgraded hash is returned as the third
+argument to the verify callback.
 
 ## Options
 *Attention!* Changing any of the hashing options (saltlen, iterations or keylen) in a production environment will prevent that existing users to authenticate!
